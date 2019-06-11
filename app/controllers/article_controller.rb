@@ -19,6 +19,25 @@ class ArticleController < ApplicationController
 		@article = Article.find(params[:id])
 	end
 
+	def edit
+		@article = Article.find(params[:id])
+	end
+
+	def update
+		@article = Article.find(params[:id])
+
+		@article.update(article_params)
+
+		redirect_to @article
+	end
+
+	def destroy
+		@article = Article.find(params[:id])
+		@article.destroy
+
+		redirect_to article_index_path
+	end
+
 	private
 	 def article_params
 	 	params.require(:article).permit(:title,:text)

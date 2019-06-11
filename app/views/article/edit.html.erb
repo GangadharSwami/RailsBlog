@@ -1,0 +1,17 @@
+<h2>Edit Article</h2>
+
+<%= form_with model: @article, local: true do |form|  %>
+	<p>
+		<%= form.label :title%>
+		<%= form.text_field :title%>
+	</p>
+	<p>
+		<%= form.label :text%>
+		<%= form.text_area :text%>
+	</p>
+	<p>
+		<%= form.submit%>
+	</p>
+<% end %>
+<br>
+<%= link_to "back", article_index_path%>	
