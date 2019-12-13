@@ -1,7 +1,17 @@
 <h2>Add new article</h2>
 
 <%= form_with scope: :article,url: article_index_path,local: true do |form|%>
-
+	
+	<% if @article.errors.any? %>
+		<div class="errors">
+			<h3><%= pluralize(@article.errors.count,"error") %> , Invalide data</h3>
+			<ul>
+				<% @article.errors.full_messages.each do |error|%>
+					<li><%= error %></li>
+					<% end %>
+			</ul>
+		</div>
+	<% end %>
 <p>
 	<%= form.label :title%>
 	<%= form.text_field :title%>
@@ -12,3 +22,6 @@
 </p>
 <p> <%= form.submit %></p>
 <% end%>
+
+<br>
+<%= link_to "Back", article_index_path%>
